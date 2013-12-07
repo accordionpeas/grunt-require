@@ -1,0 +1,1 @@
+document.write('<scr'+'ipt data-main="test/fixtures/bootstrap" src="test/fixtures/require.js"></scr'+'ipt>');
