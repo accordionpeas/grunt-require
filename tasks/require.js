@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 		else{
 			var main = options.baseUrl + '/' + options.main,
 				src = options.baseUrl + '/' + options.paths.requireLib + '.js',
-				contents = 'document.write(\'<scr\'+\'ipt data-main="' + main + '" src="' + src + '"></scr\'+\'ipt>\');';
+				contents = 'document.write(\'<scr\'+\'ipt data-main="/' + main + '" src="/' + src + '"></scr\'+\'ipt>\');';
 				
 			grunt.file.write(options.out, contents, {
 				encoding: 'utf8'
