@@ -43,7 +43,7 @@ grunt.initConfig({
         main: 'bootstrap'
     },
     dev: {
-      build: false
+        build: false
     },
     prod: {
         build: true
