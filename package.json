@@ -1,7 +1,7 @@
 {
 	"name": "grunt-require",
 	"description": "Easy switching between built and un-built versions of require.js based applications with grunt",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"homepage": "https://github.com/accordionpeas/grunt-require",
 	"author": {
 		"name": "Mike Nelson",

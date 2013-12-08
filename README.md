@@ -2,12 +2,12 @@
 
 > Easy switching between built and un-built versions of require.js based applications with grunt
 
-Achieve easy switching between development and production-ready code without changing and script references within your HTML. Built and un-built application code is written into the same file (not at the same time) so switching between them is super easy. The typical process for using this task is as follows:
+Achieve easy switching between development and production-ready code without changing any script references within your HTML. Built and un-built application code is written into the same file so switching between them is super easy. The typical process for using this task is as follows:
 
-- run gruntjs:dev
+- run grunt requirejs:dev
 - default.js now contains a document.write references to requireJS and your main config file
 - work on your app code
-- run gruntjs:prod
+- run grunt requirejs:prod
 - default.js now contains a compressed and compiled version of your app code.
 - reload browser to see your optimised code running
 
@@ -59,13 +59,13 @@ The list of possible options is the same as requireJS's optimizer options, [see 
 Type: `String`
 Default value: `' '`
 
-Base url used for writing / loading scripts. You will typically need to overwrite this option with the path to your script files
+Base url used for writing / loading scripts. You will typically need to overwrite this option with the path to your script files.
 
 #### options.out
 Type: `String`
 Default value: `'default.js'`
 
-Path to file that build and un-built require app code is written to. You will typically need to overwrite this option with the path that you want your output to be written to.
+Path to file that built and un-built require app code is written to. You will typically need to overwrite this option with the path that you want your output to be written to.
 
 #### options.paths.requireLib
 Type: `String`
