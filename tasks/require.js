@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 				},
 				build: true,
 				baseUrl: '',
+				webroot: null,
 				main: 'bootstrap',
 				out: 'default.js',
 				optimize: 'uglify',
@@ -38,8 +39,10 @@ module.exports = function(grunt) {
 			requirejs.optimize(options, options.done.bind(null, done));
 		}
 		else{
-			var main = options.baseUrl + '/' + options.main,
-				src = options.baseUrl + '/' + options.paths.requireLib + '.js',
+			var webroot = options.webroot !== null ? options.webroot : options.baseUrl; 
+
+			var main = webroot + '/' + options.main,
+				src = webroot + '/' + options.paths.requireLib + '.js',
 				contents = 'document.write(\'<scr\'+\'ipt data-main="/' + main + '" src="/' + src + '"></scr\'+\'ipt>\');';
 				
 			grunt.file.write(options.out, contents, {

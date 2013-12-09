@@ -35,11 +35,12 @@ In your project's Gruntfile, add a section named `requirejs` to the data object 
 grunt.initConfig({
   requirejs: {
     options: {
-        baseUrl: 'script',
+        baseUrl: 'some/path/script',
+        webroot: 'script',
         paths: {
             requireLib: 'libs/vendors/require'
         },
-        out: 'script/default.js',
+        out: 'some/path/script/default.js',
         main: 'bootstrap'
     },
     dev: {
@@ -85,6 +86,12 @@ Default value: `'uglify'`
 
 Optimization method used by requireJS. Detailed here to show default value.
 
+#### options.webroot
+Type: `String`
+Default value: `null`
+
+Base reference for script files. If not passed in then the value of the 'baseUrl' option will be used to generate script references.
+
 #### options.main
 Type: `String`
 Default value: `'bootstrap'`
@@ -108,3 +115,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 * 2013-12-07   v0.0.1   Initial release.
+* 2013-12-07   v0.0.2   Updated docs.
+* 2013-12-08   v0.0.3   Updated docs.
+* 2013-12-09   v0.0.4   Added 'webroot' option.
