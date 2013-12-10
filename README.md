@@ -44,10 +44,14 @@ grunt.initConfig({
         main: 'bootstrap'
     },
     dev: {
-        build: false
+		options: {
+			build: false
+		}
     },
     prod: {
-        build: true
+		options: {
+			build: true
+		}
     }
   },
 });
@@ -114,7 +118,8 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 2013-12-07   v0.0.1   Initial release.
-* 2013-12-07   v0.0.2   Updated docs.
-* 2013-12-08   v0.0.3   Updated docs.
-* 2013-12-09   v0.0.4   Added 'webroot' option.
+* 2013-12-09	v0.0.5	Updated docs.
+* 2013-12-09	v0.0.4	Added 'webroot' option.
+* 2013-12-08	v0.0.3	Updated docs.
+* 2013-12-07	v0.0.2	Updated docs.
+* 2013-12-07	v0.0.1	Initial release.
