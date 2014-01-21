@@ -1,1 +1,1 @@
-define("requireLib",function(){});
+define("bootstrap",[],function(){alert("test")}),define("requireLib",function(){});

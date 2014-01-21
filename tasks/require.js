@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 				build: true,
 				baseUrl: '',
 				webroot: null,
-				main: 'bootstrap',
+				name: 'bootstrap',
 				out: 'default.js',
 				optimize: 'uglify',
 				paths: {
@@ -30,18 +30,16 @@ module.exports = function(grunt) {
 			
 		if(options.build){
 			if(!options.mainConfigFile){
-				var mainConfigFile = options.baseUrl === '' ? options.main : options.baseUrl + '/' + options.main;
+				var mainConfigFile = options.baseUrl === '' ? options.name : options.baseUrl + '/' + options.name;
 				options.mainConfigFile = mainConfigFile + '.js';
 			}
-			//requirejs throws an exception if the "main" property is passed to it as an option.
-			delete options.main;
 			
 			requirejs.optimize(options, options.done.bind(null, done));
 		}
 		else{
 			var webroot = options.webroot !== null ? options.webroot : options.baseUrl; 
 
-			var main = webroot + '/' + options.main,
+			var main = webroot + '/' + options.name,
 				src = webroot + '/' + options.paths.requireLib + '.js',
 				contents = 'document.write(\'<scr\'+\'ipt data-main="/' + main + '" src="/' + src + '"></scr\'+\'ipt>\');';
 				

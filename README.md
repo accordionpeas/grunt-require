@@ -96,11 +96,11 @@ Default value: `null`
 
 Base reference for script files. If not passed in then the value of the 'baseUrl' option will be used to generate script references.
 
-#### options.main
+#### options.name
 Type: `String`
 Default value: `'bootstrap'`
 
-Path to main application JS file. This option should be set to the same value as you would typically set for the mainConfigFile except without the baseUrl or file extension parts.
+Name of the main config file. This file should be within the path that was set as the 'baseUrl' option. 
 
 #### options.build
 Type: `Boolean`
@@ -118,6 +118,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-01-10	v0.1.1	Fixed bug where main config file wasn't included in optimised script.
 * 2014-01-10	v0.1.0	Changed requireJS dependency to 2.1.x
 * 2013-12-09	v0.0.5	Updated docs.
 * 2013-12-09	v0.0.4	Added 'webroot' option.
