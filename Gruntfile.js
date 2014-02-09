@@ -28,10 +28,7 @@ module.exports = function(grunt) {
 		// Configuration to be run (and then tested).
 		requirejs: {
 			options: {
-				baseUrl: 'test/fixtures',
-				paths: {
-					requireLib: 'require'
-				}
+				baseUrl: 'test/fixtures'
 			},
 			
 			dev: {
@@ -40,11 +37,17 @@ module.exports = function(grunt) {
 					build: false
 				}
 			},
-		
-			prod: {
+			
+			prodAlmond: {
 				options: {
-					out: 'tmp/prod_default.js',
-					build: true
+					out: 'tmp/prod_almond_default.js'
+				}
+			},
+		
+			prodRequire: {
+				options: {
+					out: 'tmp/prod_require_default.js',
+					includeAlmond: false
 				}
 			}
 		},

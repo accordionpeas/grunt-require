@@ -1,0 +1,1 @@
+define("dependency",[],function(){alert("dependency")}),define("bootstrap",["dependency"],function(){alert("bootstrap")}),function(){return"almond"}(),define("requireLib",function(){}),require(["bootstrap"]);

@@ -16,13 +16,22 @@ exports.requirejs = {
 		test.equal(actual, expected, 'should write the reference to the un-built requirejs application to tmp/dev_default.js');
 		test.done();
 	},
-	prod: function(test) {
+	prod_almond: function(test) {
 		test.expect(1);
 		
-		var actual = grunt.file.read('tmp/prod_default.js'),
-			expected = grunt.file.read('test/expected/prod_out');
+		var actual = grunt.file.read('tmp/prod_almond_default.js'),
+			expected = grunt.file.read('test/expected/prod_almond_out');
 			
-		test.equal(actual, expected, 'should write the buult requirejs application to tmp/prod_default.js');
+		test.equal(actual, expected, 'should write the built requirejs application to tmp/prod_almond_default.js');
+		test.done();
+	},
+	prod_require: function(test) {
+		test.expect(1);
+		
+		var actual = grunt.file.read('tmp/prod_require_default.js'),
+			expected = grunt.file.read('test/expected/prod_require_out');
+			
+		test.equal(actual, expected, 'should write the built requirejs application to tmp/prod_require_default.js');
 		test.done();
 	}
 };

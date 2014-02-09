@@ -11,6 +11,8 @@ Achieve easy switching between development and production-ready code without cha
 - default.js now contains a compressed and compiled version of your app code.
 - reload browser to see your optimised code running
 
+By default the plugin will swap requireJS for almond as the AMD loader for the built code. Almond is a light-weight version of requireJS and is, therefore, preferable for production code. However, it does not have all the capabilities of requireJS and this should be taken into account. [Read more about almond](https://github.com/jrburke/almond).
+
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
 
@@ -37,11 +39,10 @@ grunt.initConfig({
     options: {
         baseUrl: 'some/path/script',
         webroot: 'script',
-        paths: {
-            requireLib: 'libs/vendors/require'
-        },
+		require: 'libs/require',
+		almond: 'libs/almond',
         out: 'some/path/script/default.js',
-        main: 'bootstrap'
+        name: 'main'
     },
     dev: {
 		options: {
@@ -66,29 +67,17 @@ Default value: `' '`
 
 Base url used for writing / loading scripts. You will typically need to overwrite this option with the path to your script files.
 
-#### options.out
+#### options.require
 Type: `String`
-Default value: `'default.js'`
+Default value: `'require'`
 
-Path to file that built and un-built require app code is written to. You will typically need to overwrite this option with the path that you want your output to be written to.
+Path to the requireJS library relative to the baseURL option.
 
-#### options.paths.requireLib
+#### options.almond
 Type: `String`
-Default value: `'node_modules/requirejs/require'`
+Default value: `'almond'`
 
-Path to requireJS library. You will typically need to overwrite this option with the path to your local copy of requireJS.
-
-#### options.include
-Type: `String`
-Default value: `'requireLib'`
-
-Include options for requireJS. Detailed here to show default value.
-
-#### options.optimize
-Type: `String`
-Default value: `'uglify'`
-
-Optimization method used by requireJS. Detailed here to show default value.
+Path to the almond library relative to the baseURL option.
 
 #### options.webroot
 Type: `String`
@@ -100,13 +89,43 @@ Base reference for script files. If not passed in then the value of the 'baseUrl
 Type: `String`
 Default value: `'bootstrap'`
 
-Name of the main config file. This file should be within the path that was set as the 'baseUrl' option. 
+Name of the script that acts as the entry point into your application, relative to the baseURL option.
+
+#### options.out
+Type: `String`
+Default value: `'default.js'`
+
+Path to file that built and un-built require app code is written to. You will typically need to overwrite this option with the path that you want your output to be written to.
+
+#### options.include
+Type: `Array`
+Default value: `['requireLib']`
+
+Includes the reserved 'requireLib' module, which will point to either requireJS or almond.
+
+#### options.insertRequire
+Type: `Array`
+Default value: `['bootstrap']`
+
+Insert a `require(['bootstrap']);` at the end of the build code to kick off the application code.
 
 #### options.build
 Type: `Boolean`
 Default value: `true`
 
-Whether to optimize the application or not. If set to true all the application code (including requireJS will be compressed and compiled into the file specified in the 'out' option. If set to false. A reference to requireJS and the bootstrap file will be written into the file specified in the 'out' option.
+Whether to optimize the application or not. If left as `true` all the application code (including requireJS will be compressed and compiled into the file specified in the 'out' option. If set to false. A reference to requireJS and the bootstrap file will be written into the file specified in the 'out' option.
+
+#### options.includeAlmond
+Type: `Boolean`
+Default value: `true`
+
+Whether to include almond as the AMD library in the built code. If set to `false` requireJS will be included instead.
+
+#### options.optimize
+Type: `String`
+Default value: `'uglify'`
+
+Optimization method used by requireJS. Detailed here to show default value.
 
 #### options.done
 Type: `Function`
@@ -118,6 +137,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-02-09	v1.0.0	Built script uses Almond as default AMD library.
 * 2014-01-10	v0.1.1	Fixed bug where main config file wasn't included in optimised script.
 * 2014-01-10	v0.1.0	Changed requireJS dependency to 2.1.x
 * 2013-12-09	v0.0.5	Updated docs.

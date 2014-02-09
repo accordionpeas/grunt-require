@@ -1,5 +1,7 @@
-define(function(){
+define([
+	'dependency'
+],function(){
 
-	alert('test');
+	alert('bootstrap');
 
 });
