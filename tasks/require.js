@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 				almond: 'almond',
 				webroot: null,
 				name: name,
+				mainConfigFile: 'config.js',
 				out: 'default.js',
 				include: ['requireLib'],
 				insertRequire: [name],
@@ -42,18 +43,33 @@ module.exports = function(grunt) {
 			var requireLib = options.includeAlmond ? options.almond : options.require;
 			
 			options.paths = _.extend({
-				requireLib: requireLib,
+				requireLib: requireLib
 			}, options.paths);
 			
 			requirejs.optimize(options, options.done.bind(null, done));
 		}
 		else{
-			var webroot = options.webroot !== null ? options.webroot : options.baseUrl; 
+			var webroot = options.webroot !== null ? options.webroot : options.baseUrl,
+				main = '/' + options.mainConfigFile,
+				src = '/' + webroot + '/' + options.require + '.js',
+				contents = 
+					'(function(){' +
+						'var loaded = false;' +
+						'var el = document.createElement( "script" );' +
+						'el.setAttribute("data-main", "' + main + '");' +
+						'el.src = "' + src + '";' +
+						'el.onload = el.onreadystatechange = function(){' +
+							'if(!loaded && (!this.readyState || ' +
+								'this.readyState === "loaded" || this.readyState === "complete")){' +
+									'loaded = true;' +
+									'require(["' + options.name + '"], function(){});' +
+									'el.onload = el.onreadystatechange = null;' +
+									'document.body.removeChild(el);' +
+								'}' +
+						'};' +
+						'document.body.appendChild(el);' +
+					'})()';
 
-			var main = webroot + '/' + options.name,
-				src = webroot + '/' + options.require + '.js',
-				contents = 'document.write(\'<scr\'+\'ipt data-main="/' + main + '" src="/' + src + '"></scr\'+\'ipt>\');';
-				
 			grunt.file.write(options.out, contents, {
 				encoding: 'utf8'
 			});

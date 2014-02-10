@@ -5,7 +5,7 @@
 Achieve easy switching between development and production-ready code without changing any script references within your HTML. Built and un-built application code is written into the same file so switching between them is super easy. The typical process for using this task is as follows:
 
 - run grunt requirejs:dev
-- default.js now contains a document.write references to requireJS and your main config file
+- default.js now contains references to requireJS and your main config file as well as an automatic require block for your "main" script - the entry point into your application.
 - work on your app code
 - run grunt requirejs:prod
 - default.js now contains a compressed and compiled version of your app code.
@@ -38,6 +38,7 @@ grunt.initConfig({
   requirejs: {
     options: {
         baseUrl: 'some/path/script',
+        mainConfigfile: 'some/path/script/config.js',
         webroot: 'script',
 		require: 'libs/require',
 		almond: 'libs/almond',
@@ -89,7 +90,13 @@ Base reference for script files. If not passed in then the value of the 'baseUrl
 Type: `String`
 Default value: `'bootstrap'`
 
-Name of the script that acts as the entry point into your application, relative to the baseURL option.
+Name of the script that acts as the entry point into your application, relative to the baseURL option. This file will be automatically required in both the built and un-built scripts.
+
+#### options.mainConfigFile
+Type: `String`
+Default value: `'config'`
+
+Name of the script that contains the main config for your application.
 
 #### options.out
 Type: `String`
@@ -137,9 +144,10 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-02-10    v1.0.1  Fixed bug with almond and mainConfigFile needed in separate file.
 * 2014-02-09	v1.0.0	Built script uses Almond as default AMD library.
 * 2014-01-10	v0.1.1	Fixed bug where main config file wasn't included in optimised script.
-* 2014-01-10	v0.1.0	Changed requireJS dependency to 2.1.x
+* 2014-01-10	v0.1.0	Changed requireJS dependency to 2.1.x.
 * 2013-12-09	v0.0.5	Updated docs.
 * 2013-12-09	v0.0.4	Added 'webroot' option.
 * 2013-12-08	v0.0.3	Updated docs.
