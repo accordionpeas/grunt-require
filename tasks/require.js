@@ -21,8 +21,8 @@ module.exports = function(grunt) {
 				almond: 'almond',
 				webroot: null,
 				name: name,
-				config: 'config',
-				out: 'default',
+				config: 'config.js',
+				out: 'default.js',
 				include: ['requireLib'],
 				insertRequire: [name],
 				

@@ -28,8 +28,7 @@ module.exports = function(grunt) {
 		// Configuration to be run (and then tested).
 		requirejs: {
 			options: {
-				baseUrl: 'test/fixtures',
-				mainConfigFile: 'test/fixtures/config.js'
+				baseUrl: 'test/fixtures'
 			},
 			
 			dev: {
