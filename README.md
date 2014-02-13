@@ -144,6 +144,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-02-13    v1.0.5  Root-referenced initial request for config file.
 * 2014-02-13    v1.0.4  Added missing file extensions to default options.
 * 2014-02-13    v1.0.3  Fixed broken path to main config file for optimised code.
 * 2014-02-13    v1.0.2  Fixed face condition between config and bootstrap loading.

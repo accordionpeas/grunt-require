@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 							'if(!loaded && (!this.readyState || ' +
 								'this.readyState === "loaded" || this.readyState === "complete")){' +
 									'loaded = true;' +
-									'require(["' + webroot + '/' + options.config + '"], function(){' +
+									'require(["/' + webroot + '/' + options.config + '"], function(){' +
 										'require(["' + options.name + '"], function(){});' +
 									'});' +
 									'el.onload = el.onreadystatechange = null;' +
