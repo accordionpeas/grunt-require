@@ -21,8 +21,8 @@ module.exports = function(grunt) {
 				almond: 'almond',
 				webroot: null,
 				name: name,
-				mainConfigFile: 'config.js',
-				out: 'default.js',
+				config: 'config',
+				out: 'default',
 				include: ['requireLib'],
 				insertRequire: [name],
 				
@@ -38,6 +38,10 @@ module.exports = function(grunt) {
 		if(options.build){
 			if(!options.paths){
 				options.paths = {};
+			}
+
+			if(!options.mainConfigFile){
+				options.mainConfigFile = options.baseUrl + '/' + options.config;
 			}
 			
 			var requireLib = options.includeAlmond ? options.almond : options.require;
@@ -60,7 +64,7 @@ module.exports = function(grunt) {
 							'if(!loaded && (!this.readyState || ' +
 								'this.readyState === "loaded" || this.readyState === "complete")){' +
 									'loaded = true;' +
-									'require(["' + options.mainConfigFile + '"], function(){' +
+									'require(["' + webroot + '/' + options.config + '"], function(){' +
 										'require(["' + options.name + '"], function(){});' +
 									'});' +
 									'el.onload = el.onreadystatechange = null;' +

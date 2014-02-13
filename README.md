@@ -37,13 +37,13 @@ In your project's Gruntfile, add a section named `requirejs` to the data object 
 grunt.initConfig({
   requirejs: {
     options: {
-        baseUrl: 'some/path/script',
-        mainConfigfile: 'some/path/script/config.js',
+        baseUrl: 'app/webroot/script',
         webroot: 'script',
+        config: 'config.js',
+        name: 'main',
 		require: 'libs/require',
 		almond: 'libs/almond',
-        out: 'some/path/script/default.js',
-        name: 'main'
+        out: 'app/webroot/script/default.js'
     },
     dev: {
 		options: {
@@ -92,11 +92,11 @@ Default value: `'bootstrap'`
 
 Name of the script that acts as the entry point into your application, relative to the baseURL option. This file will be automatically required in both the built and un-built scripts.
 
-#### options.mainConfigFile
+#### options.config
 Type: `String`
-Default value: `'config'`
+Default value: `'config.js'`
 
-Name of the script that contains the main config for your application.
+Name of the script that contains the main config for your application, relative to the webroot option. This path is concatenated with the baseUrl option to generate the mainConfigFile option that is passed into the requireJS optimizer, if it is not passed in as an option.
 
 #### options.out
 Type: `String`
@@ -144,6 +144,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-02-13    v1.0.3  Fixed broken path to main config file for optimised code.
 * 2014-02-13    v1.0.2  Fixed face condition between config and bootstrap loading.
 * 2014-02-10    v1.0.1  Fixed bug with almond and mainConfigFile needed in separate file.
 * 2014-02-09	v1.0.0	Built script uses Almond as default AMD library.
