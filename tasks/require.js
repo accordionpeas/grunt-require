@@ -50,19 +50,19 @@ module.exports = function(grunt) {
 		}
 		else{
 			var webroot = options.webroot !== null ? options.webroot : options.baseUrl,
-				main = '/' + options.mainConfigFile,
 				src = '/' + webroot + '/' + options.require + '.js',
 				contents = 
 					'(function(){' +
 						'var loaded = false;' +
 						'var el = document.createElement( "script" );' +
-						'el.setAttribute("data-main", "' + main + '");' +
 						'el.src = "' + src + '";' +
 						'el.onload = el.onreadystatechange = function(){' +
 							'if(!loaded && (!this.readyState || ' +
 								'this.readyState === "loaded" || this.readyState === "complete")){' +
 									'loaded = true;' +
-									'require(["' + options.name + '"], function(){});' +
+									'require(["' + options.mainConfigFile + '"], function(){' +
+										'require(["' + options.name + '"], function(){});' +
+									'});' +
 									'el.onload = el.onreadystatechange = null;' +
 									'document.body.removeChild(el);' +
 								'}' +
