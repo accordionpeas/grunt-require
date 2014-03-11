@@ -33,7 +33,16 @@ module.exports = function(grunt) {
 				done: function(done, response){
 					done();
 				}
-			});
+			}),
+			cmdOpts = {};
+
+		//mixin command line options
+		for(var i in options){
+			var cmdOpt = grunt.option(i);
+			if(typeof cmdOpt !== 'undefined'){
+				options[i] = cmdOpt;
+			}
+		}
 			
 		if(options.build){
 			if(!options.paths){
