@@ -39,7 +39,7 @@ grunt.initConfig({
     options: {
         baseUrl: 'app/webroot/script',
         webroot: 'script',
-        config: 'config.js',
+        config: ['config.js'],
         name: 'main',
 		require: 'libs/require',
 		almond: 'libs/almond',
@@ -94,9 +94,9 @@ Name of the script that acts as the entry point into your application, relative 
 
 #### options.config
 Type: `String`
-Default value: `'config.js'`
+Default value: `['config.js']`
 
-Name of the script that contains the main config for your application, relative to the webroot option. This path is concatenated with the baseUrl option to generate the mainConfigFile option that is passed into the requireJS optimizer, if it is not passed in as an option.
+Array of scripts that contains the main config for your application, relative to the webroot option. The paths are concatenated with the baseUrl option to generate the mainConfigFile option that is passed into the requireJS optimizer, if it is not passed in as an option.
 
 #### options.out
 Type: `String`
@@ -144,6 +144,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-05-21    v1.1.1  Fixed bug with "main" option not configurable. Update to "config" option which can now be passed in as an array.
 * 2014-03-11    v1.1.0  All options can now be passed in via the command line.
 * 2014-02-13    v1.0.5  Root-referenced initial request for config file.
 * 2014-02-13    v1.0.4  Added missing file extensions to default options.
