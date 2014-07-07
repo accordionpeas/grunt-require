@@ -96,10 +96,6 @@ module.exports = function(grunt) {
 			}),
 			cmdOpts = {};
 
-		if(!Array.isArray(options.config)){
-			options.config = [options.config];
-		}
-
 		if(!options.insertRequire){
 			options.insertRequire = [];
 		}
@@ -112,6 +108,10 @@ module.exports = function(grunt) {
 			if(typeof cmdOpt !== 'undefined'){
 				options[i] = cmdOpt;
 			}
+		}
+
+		if(!Array.isArray(options.config)){
+			options.config = [options.config];
 		}
 			
 		if(options.build){

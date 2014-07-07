@@ -144,6 +144,7 @@ Function that is invoked when requireJS has finished optimizing.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 2014-07-07    v1.1.2  Fixed bug with "main" with config option not converted to an array if passed via command line.
 * 2014-05-21    v1.1.1  Fixed bug with "main" option not configurable. Update to "config" option which can now be passed in as an array.
 * 2014-03-11    v1.1.0  All options can now be passed in via the command line.
 * 2014-02-13    v1.0.5  Root-referenced initial request for config file.
